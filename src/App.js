@@ -1,23 +1,22 @@
-import logo from "./logo.svg";
+import "./App.css";
+import Reservation from "./components/Reservation";
+import Nav from "./components/Nav";
+import Header from "./components/Header";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import useLocalStorage from "../useLocalStorage";
 
 function App() {
+  // const [tasks, setTasks] = useLocalStorage("tasks", inicialValue);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="pl-10 bg-black">
+        <Nav />
+        <Header />
+        <Switch>
+          <Route path="/reservation" component={Reservation}></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
