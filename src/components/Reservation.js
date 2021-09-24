@@ -1,48 +1,74 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-export default function Reservation({ onSubmit }) {
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [people, setPeople] = useState("");
-
-  const handleOnChange = (e) => {
-    setFirstName(e.target.value);
-    setEmail(e.target.value);
-    setPhone(e.target.value);
-    setPeople(e.target.value);
-  };
+export default function Reservation({
+  handleSubmit,
+  value,
+  setValue,
+  handleOnChange,
+}) {
   return (
-    <form onClick={onSubmit} className="flex flex-col w-full max-w-2xl ">
+    <form
+      onClick={handleSubmit}
+      className="flex flex-col w-full max-w-xl my-4 p-8 bg-white space-y-8"
+    >
       <input
         placeholder="Name"
-        className="rounded-md border-2 border-purple-900"
+        className="border-0 border-b-2 border-gray-400 text-xl focus:ring-0 focus:border-b-2 focus:border-black"
+        name="name"
         type="text"
-        value={firstName}
+        value={value.name}
         onChange={handleOnChange}
       />
       <input
         placeholder="E-mail"
-        className="rounded-md border-2 border-purple-900"
+        className="border-0 border-b-2 border-gray-400 text-xl focus:ring-0 focus:border-b-2 focus:border-black"
         type="email"
-        value={email}
+        name="email"
+        value={value.email}
         onChange={handleOnChange}
       />
       <input
         placeholder="Phone"
-        className="rounded-md border-2 border-purple-900"
+        className="border-0 border-b-2 border-gray-400 text-xl focus:ring-0 focus:border-b-2 focus:border-black"
         type="tel"
-        value={phone}
+        name="phone"
+        value={value.phone}
         onChange={handleOnChange}
       />
+      <div className="flex ">
+        <label className="w-32 text-xl">Pick a day</label>
+        <input
+          type="date"
+          name="date"
+          className="w-full border-0 border-b-2 border-gray-400 text-lg focus:ring-0 focus:border-b-2 focus:border-black"
+          value={value.date}
+          onChange={handleOnChange}
+        />
+      </div>
+      <div className="flex">
+        <label className="w-32 text-xl">Pick a time</label>
+        <input
+          type="time"
+          name="time"
+          className="w-full border-0 border-b-2 border-gray-400 text-lg focus:ring-0 focus:border-b-2 focus:border-black"
+          value={value.time}
+          onChange={handleOnChange}
+        />
+      </div>
       <input
         placeholder="People"
-        className=""
-        type="select"
-        value={people}
+        name="people"
+        className="border-0 border-b-2 border-gray-400 text-center text-xl focus:ring-0 focus:border-b-2 focus:border-black"
+        type="number"
+        value={value.people}
         onChange={handleOnChange}
       />
-      <input type="submit" value="save" />
+      <button
+        type="submit"
+        className="w-full bg-black py-4 px-6 text-gray-200 text-xl self-center"
+      >
+        Make a reservation
+      </button>
     </form>
   );
 }
